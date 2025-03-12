@@ -92,4 +92,40 @@ public class Televisao
         }
     }
 
+    
+    public void AumentarCanal(){
+        if (Canal > 10)
+        {
+            Console.WriteLine($"A TV já está no canal máximo permitido({Canal}).");
+        }
+        else
+        {
+            Canal ++;
+        }
+    }
+
+    public void DiminuirCanal()
+    {
+        if (Canal < 1)
+        {
+            Console.WriteLine($"A TV já está no canal mínimo permitido({Canal}).");
+        }
+        else 
+        {
+            Canal --;
+        }
+    }
+
+    public void SelecionarCanal(int canal_selecionado)
+    {
+        if (canal_selecionado > 10 && canal_selecionado < 1)
+        {
+            throw new ArgumentOutOfRangeException($"O canal selecionado ({canal_selecionado}) não existe!\nPor favor selecione entre 1 e 10.");
+        }
+        else 
+        {
+            Canal = canal_selecionado;
+            Console.WriteLine($"O canal '{canal_selecionado}' foi selecionado!");
+        }
+    }
 }
