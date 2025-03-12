@@ -17,6 +17,8 @@ public class Televisao
         }
         Tamanho = tamanho;
         Volume = VOLUME_PADRAO;
+        Mudo = MUDO_PADRAO;
+        Canal = 4;
     }
 
     //Optamos pela utilização da constante para tornar o código mais legível.
@@ -25,7 +27,7 @@ public class Televisao
     private const int VOLUME_MAXIMO = 12;
     private const int VOLUME_MINIMO = 0;
     private const int VOLUME_PADRAO = 10;
-
+    private const bool MUDO_PADRAO = false;
     private int _ultimoVolume = VOLUME_PADRAO;
 
 
@@ -44,7 +46,7 @@ public class Televisao
     public int Resolucao { get; set; }
     public int Volume { get; private set; }
     public int Canal { get; set; }
-    public bool Estado { get; set; }
+    public bool Mudo { get; set; }
 
     public void AumentarVolume()
     {
@@ -76,16 +78,18 @@ public class Televisao
     //Volume = x; Volume = 0; Volume = x;
     public void AlternarModoMudo()
     {
-        if (Volume > VOLUME_MINIMO)
+        if (Mudo == false)
         {
             _ultimoVolume = Volume;
-            Volume = VOLUME_MINIMO;
+            Mudo = true;
             Console.WriteLine("A TV está no modo MUTE.");
         }
         else
         {
             Volume = _ultimoVolume;
+            Mudo = false;
             Console.WriteLine($"O volume da TV é: {Volume}.");
         }
     }
+
 }
